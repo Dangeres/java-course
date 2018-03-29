@@ -1,31 +1,26 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class main {
-  
-public static String delete(String str){
-		StringBuilder sb = new StringBuilder();
-		sb.append(str);
-		for(int a = 0;a<sb.length();a++){
-			if(sb.charAt(a)>='0'&&sb.charAt(a)<='9'){
-				if(a+1<sb.length()&&sb.charAt(a+1)=='.'){
-					if(a+2<sb.length()&&sb.charAt(a+2)>='0'&&sb.charAt(a+2)<='9'){
-						sb.deleteCharAt(a+2);
-						sb.deleteCharAt(a+1);
-					}
-				}
-				sb.deleteCharAt(a);
-				a--;
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		boolean mas[] = new boolean[n+1];
+		
+		for(int a=2;a<=n;a++){
+			int k = 2;
+			while(a*k<=n){
+				mas[a*k]=true;
+				k++;
 			}
 		}
-		return sb.toString();
+		
+		for(int a=2;a<=n;a++){
+			if(!mas[a]){
+				System.out.println(a);
+			}
+		}
 	}
 
-public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);		
-		String str = sc.nextLine();
-		System.out.println(delete(str));
-	}
 }
